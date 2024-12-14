@@ -20,9 +20,6 @@ interface UserDao {
     @Query("SELECT * FROM user_table WHERE email = :email")
     suspend fun getUserByEmail(email: String): UserEntity?
 
-    @Query("SELECT * FROM user_table WHERE password = :password")
-    suspend fun getUserByPassword(password: String): UserEntity?
-
     @Query("DELETE FROM user_table WHERE userId = :userId")
     suspend fun deleteUserById(userId: Int)
 

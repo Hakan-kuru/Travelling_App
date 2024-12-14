@@ -22,7 +22,7 @@ class GetUserUsecase( private val userRepository: UserRepository) {
         return userRepository.getUserByUsername(username)
     }
 
-    suspend fun getAllUsers(): List<User> {
+    suspend fun getAllUsers(): List<Unit> {
         return userRepository.getAllUsers()
     }
 }

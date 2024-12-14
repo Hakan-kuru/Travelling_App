@@ -62,6 +62,7 @@ dependencies {
 
     implementation(libs.androidx.material3)
     implementation(libs.junit.junit)
+    implementation(libs.generativeai)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -81,6 +82,14 @@ dependencies {
     implementation(libs.androidx.appcompat)
     /* bu varya tam bi piç */
     //implementation(libs.androidx.room.compiler)
+    implementation("androidx.compose.material:material-icons-extended:latest-version")
+
+
+    val compose_version = "1.7.6"
+    implementation("androidx.compose.ui:ui:$compose_version")
+    implementation("androidx.compose.material:material:1.7.6")
+    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
+    implementation("androidx.navigation:navigation-compose:2.7.0")
 
     //fot Testing
 
