@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -25,8 +26,9 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.style.LineHeightStyle
 import androidx.compose.ui.unit.dp
+import com.example.Travelling_App.domain.models.Destination
+import com.example.Travelling_App.domain.models.Restaurant
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
@@ -62,19 +64,19 @@ fun DashBoardScreen(userName: String, restaurants: List<Restaurant>, touristPlac
                 leadingIcon = { Icon(Icons.Filled.Search, contentDescription = "Search") },
                 modifier = Modifier
                     .fillMaxWidth(0.9f)
-                    .align(LineHeightStyle.Alignment.Start)
+                    .align(Alignment.Start)
             )
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Popüler Restoranlar
-            Text("Popüler Restoranlar", style = MaterialTheme.typography.h6)
+            Text("Popüler Restoranlar", style = MaterialTheme.typography.headlineSmall)
             HorizontalCardList(restaurants.map { it.restaurantName })
 
             Spacer(modifier = Modifier.height(16.dp))
 
             // Turistik Mekanlar
-            Text("Turistik Mekanlar", style = MaterialTheme.typography.h6)
+            Text("Turistik Mekanlar", style = MaterialTheme.typography.headlineSmall)
             HorizontalCardList(touristPlaces.map { it.name })
 
             Spacer(modifier = Modifier.height(16.dp))
@@ -90,15 +92,15 @@ fun DashBoardScreen(userName: String, restaurants: List<Restaurant>, touristPlac
 @Composable
 fun HorizontalCardList(items: List<String>) {
     LazyRow {
-        items(items) { item ->
+        items(items.size) { item ->
             Card(
                 modifier = Modifier
                     .padding(8.dp)
                     .size(150.dp, 100.dp),
-                elevation = 4.dp
+                elevation = CardDefaults.cardElevation(4.dp)
             ) {
                 Box(contentAlignment = Alignment.Center) {
-                    Text(text = item, style = MaterialTheme.typography.body1)
+                    Text(text = item.toString(), style = MaterialTheme.typography.bodyLarge)
                 }
             }
         }
