@@ -91,6 +91,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
     implementation("androidx.navigation:navigation-compose:2.7.0")
 
+    implementation("om.google.dagger:hilt-android:2.47")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.47")
     //fot Testing
 
 }

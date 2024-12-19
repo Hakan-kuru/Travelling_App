@@ -2,42 +2,54 @@ package com.example.Travelling_App.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.Travelling_App.domain.usecase.GetUserUsecase
 import com.example.Travelling_App.domain.models.User
+import com.example.Travelling_App.domain.usecase.*
+import com.example.Travelling_App.domain.usecase.userUsecase.DeleteUserUsecase
+import com.example.Travelling_App.domain.usecase.userUsecase.GetAllUsersUsecase
+import com.example.Travelling_App.domain.usecase.userUsecase.GetUserByIdUsecase
+import com.example.Travelling_App.domain.usecase.userUsecase.GetUserByUsernameUsecase
+import com.example.Travelling_App.domain.usecase.userUsecase.UpdateUserUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class UserViewModel(private val getUserUsecase: GetUserUsecase) : ViewModel(){
-        fun loadUser(userId: Int,onResult: (User?) -> Unit){
-            viewModelScope.launch {
-                val users = getUserUsecase.getUser(userId)
-                onResult(users)
-            }
-        }
+@HiltViewModel
+class UserViewModel @Inject constructor(
+    private val getUserByIdUsecase: GetUserByIdUsecase,
+    private val updateUserUsecase: UpdateUserUsecase,
+    private val deleteUserUsecase: DeleteUserUsecase,
+    private val getUserByUsernameUsecase: GetUserByUsernameUsecase,
+    private val getAllUsersUsecase: GetAllUsersUsecase
+) : ViewModel() {
 
-        fun getUserByUsername(username: String, onResult: (User?) -> Unit) {
-            viewModelScope.launch {
-                val user = getUserUsecase.getUserByUsername(username)
-                onResult(user)
-            }
+    fun getUserById(id: Int, onResult: (User?) -> Unit) {
+        viewModelScope.launch {
+            val user = getUserByIdUsecase(id)
+            onResult(user)
         }
+    }
 
-        fun updateUser(user: User, onComplete: () -> Unit) {
-            viewModelScope.launch {
-                getUserUsecase.updateUser(user)
-                onComplete()
-            }
-        }
-        fun deleteUser(userId: Int,onComplete: () -> Unit){
-            viewModelScope.launch {
-                getUserUsecase.deleteUser(userId)
-                onComplete()
-                }
-        }
-        fun getAllUsers(onResult: (List<User>) -> Unit){
-            viewModelScope.launch {
-                val users = getUserUsecase.getAllUsers()
-                onResult(users)
-            }
-        }
+    fun updateUser(user: User) {
+        updateUserUsecase(user)
+    }
 
+    fun deleteUser(id: Int) {
+        viewModelScope.launch {
+            deleteUserUsecase(id)
+        }
+    }
+
+    fun getUserByUsername(username: String, onResult: (User?) -> Unit) {
+        viewModelScope.launch {
+            val user = getUserByUsernameUsecase(username)
+            onResult(user)
+        }
+    }
+
+    fun getAllUsers(onResult: (List<User>) -> Unit) {
+        viewModelScope.launch {
+            val users = getAllUsersUsecase()
+            onResult(users)
+        }
+    }
 }
