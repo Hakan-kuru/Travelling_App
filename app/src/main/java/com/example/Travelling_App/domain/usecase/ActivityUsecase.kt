@@ -1,7 +1,7 @@
 package com.example.Travelling_App.domain.usecase
 
 import androidx.lifecycle.ViewModel
-import com.example.Travelling_App.data.database.repositories.ActivityRepository
+import com.example.Travelling_App.data.repositories.ActivityRepository
 import com.example.Travelling_App.domain.models.Activity
 
 class ActivityUsecase(private val activityRepo: ActivityRepository) : ViewModel() {

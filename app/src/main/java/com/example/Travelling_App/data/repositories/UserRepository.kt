@@ -1,4 +1,4 @@
-package com.example.Travelling_App.data.database.repositories
+package com.example.Travelling_App.data.repositories
 
 import com.example.Travelling_App.data.database.local.daos.UserDao
 import com.example.Travelling_App.data.database.local.entity.UserEntity
@@ -22,7 +22,7 @@ class UserRepository(private val userDao: UserDao, private val userApiService: U
         userDao.deleteUserById(id)
     }
 
-    suspend fun getAllUsers(): List<Unit> {
+    suspend fun getAllUsers(): List<User> {
         return userDao.getAllUsers().map { it.toDomainModel() }
     }
 
@@ -30,8 +30,16 @@ class UserRepository(private val userDao: UserDao, private val userApiService: U
         runBlocking {
             userDao.insertUser(user.toEntity())
         }
-
     }
+
+    suspend fun addUser(user: User) {
+        userDao.insertUser(user.toEntity())
+    }
+
+    suspend fun getUserByEmail(email: String): User? {
+        return userDao.getUserByEmail(email)?.toDomainModel()
+    }
+
     // diğerlerini sonra yazarız
 }
 

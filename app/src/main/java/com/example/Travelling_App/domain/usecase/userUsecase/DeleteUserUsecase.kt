@@ -1,6 +1,6 @@
 package com.example.Travelling_App.domain.usecase.userUsecase
 
-import com.example.Travelling_App.data.database.repositories.UserRepository
+import com.example.Travelling_App.data.repositories.UserRepository
 import javax.inject.Inject
 
 class DeleteUserUsecase @Inject constructor(

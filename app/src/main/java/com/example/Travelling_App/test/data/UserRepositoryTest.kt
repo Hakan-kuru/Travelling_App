@@ -1,8 +1,8 @@
 package com.example.Travelling_App.test.data
 
 import com.example.Travelling_App.data.database.local.entity.UserEntity
-import com.example.Travelling_App.data.database.repositories.toDomainModel
-import com.example.Travelling_App.data.database.repositories.toEntity
+import com.example.Travelling_App.data.repositories.toDomainModel
+import com.example.Travelling_App.data.repositories.toEntity
 import com.example.Travelling_App.domain.models.User
 import org.junit.Test
 import org.junit.Assert.*

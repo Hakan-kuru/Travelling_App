@@ -1,6 +1,6 @@
 package com.example.Travelling_App.domain.usecase
 
-import com.example.Travelling_App.data.database.repositories.ReminderRepository
+import com.example.Travelling_App.data.repositories.ReminderRepository
 import com.example.Travelling_App.domain.models.Reminder
 
 class ReminderUsecase(private val reminderRepository: ReminderRepository) {

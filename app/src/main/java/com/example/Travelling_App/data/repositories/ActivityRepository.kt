@@ -1,4 +1,4 @@
-package com.example.Travelling_App.data.database.repositories
+package com.example.Travelling_App.data.repositories
 
 import com.example.Travelling_App.data.database.local.daos.ActivityDao
 import com.example.Travelling_App.data.database.local.entity.ActivityEntity

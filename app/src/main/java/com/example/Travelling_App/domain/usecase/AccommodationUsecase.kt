@@ -1,6 +1,6 @@
 package com.example.Travelling_App.domain.usecase
 
-import com.example.Travelling_App.data.database.repositories.AccommodationRepository
+import com.example.Travelling_App.data.repositories.AccommodationRepository
 import com.example.Travelling_App.domain.models.Accommodation
 
 class AccommodationUsecase(private val accommodationRepository: AccommodationRepository) {

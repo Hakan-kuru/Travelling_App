@@ -1,6 +1,6 @@
 package com.example.Travelling_App.domain.usecase
 
-import com.example.Travelling_App.data.database.repositories.RestaurantRepository
+import com.example.Travelling_App.data.repositories.RestaurantRepository
 import com.example.Travelling_App.domain.models.Restaurant
 
 class GetRestaurantUsecase (private val restaurantRepository: RestaurantRepository){
