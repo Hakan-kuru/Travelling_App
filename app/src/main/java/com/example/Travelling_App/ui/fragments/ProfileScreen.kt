@@ -26,9 +26,9 @@ fun ProfileScreen(userName: String, email: String, budget: Double, preference: S
     ) {
         Icon(Icons.Filled.Person, contentDescription = "Profile Icon", modifier = Modifier.size(100.dp))
         Spacer(modifier = Modifier.height(16.dp))
-        Text("Kullanıcı Adı: $userName", style = MaterialTheme.typography.h6)
-        Text("Email: $email", style = MaterialTheme.typography.body1)
-        Text("Bütçe: $budget", style = MaterialTheme.typography.body1)
-        Text("Tercihler: $preference", style = MaterialTheme.typography.body1)
+        Text("Kullanıcı Adı: $userName", style = MaterialTheme.typography.headlineSmall)
+        Text("Email: $email", style = MaterialTheme.typography.bodySmall)
+        Text("Bütçe: $budget", style = MaterialTheme.typography.bodySmall)
+        Text("Tercihler: $preference", style = MaterialTheme.typography.bodySmall)
     }
 }
