@@ -23,7 +23,7 @@ fun ReminderScreen(viewModel: ReminderViewModel = viewModel()) {
     val plannedReminders by viewModel.plannedReminders.collectAsState()
     val wishListReminders by viewModel.wishListReminders.collectAsState()
 
-    val pagerState = rememberPagerState()
+    val pagerState = rememberPagerState(initialPage = 2, pageCount ={2})
     val coroutineScope = rememberCoroutineScope()
 
     Column(modifier = Modifier.fillMaxSize()) {
@@ -39,7 +39,7 @@ fun ReminderScreen(viewModel: ReminderViewModel = viewModel()) {
             }
         }
 
-        HorizontalPager(count = 2, state = pagerState) { page ->
+        HorizontalPager(state = pagerState) { page ->
             when (page) {
                 0 -> ReminderList(reminders = plannedReminders)
                 1 -> ReminderList(reminders = wishListReminders)
@@ -58,8 +58,8 @@ fun ReminderList(reminders: List<Reminder>) {
         )
     } else {
         LazyColumn {
-            items(reminders, key = { it.reminderId }) { reminder ->
-                ReminderCard(reminder = reminder)
+            items(reminders.size, key = { it }) { reminder ->
+                ReminderCard(reminder = reminders[reminder] )
             }
         }
     }

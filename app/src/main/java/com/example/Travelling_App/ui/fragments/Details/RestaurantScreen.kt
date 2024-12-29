@@ -45,7 +45,7 @@ fun RestaurantScreen(restaurant: Restaurant){
                 modifier = Modifier.padding(bottom = 8.dp)
             )
             Image(
-                painter = painterResource(id = restaurant.image),
+                painter = painterResource(id = restaurant.restaurantId),
                 contentDescription = null,
                 modifier = Modifier.fillMaxWidth()
             )

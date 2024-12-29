@@ -12,5 +12,6 @@ data class RestaurantEntity(
     val cuisineType: String,
     val rating: Double,
     val priceRange: String,
-    val number: Int
+    val number: Int,
+    val image: String
 )

@@ -1,5 +1,6 @@
 package com.example.app.signup
 
+import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -8,13 +9,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.Travelling_App.presentation.viewmodel.UserViewModel
 
 @Composable
 fun SignUp(
     onSignUpSuccess: (String) -> Unit,
     onSignUpError: (String) -> Unit,
-    viewModel: UserViewModel
+    viewModel: UserViewModel = hiltViewModel()
 ) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -133,7 +135,12 @@ fun SignUp(
 }
 @Preview(showBackground = true)
 @Composable
-fun SignUpPreview() {
-
+fun SignUpPreview() { // Eğer bir mock veya sahte viewModel gerekirse
+    SignUp(
+        onSignUpSuccess = { message -> println("Success: $message") },
+        onSignUpError = { error -> println("Error: $error") },
+        viewModel = hiltViewModel()
+    )
 }
+
 

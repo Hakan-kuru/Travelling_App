@@ -16,8 +16,6 @@ class UserRepository(private val userDao: UserDao, private val userApiService: U
         return userDao.getUserById(id)?.toDomainModel()
     }
 
-
-
     suspend fun deleteUser(id: Int) {
         userDao.deleteUserById(id)
     }

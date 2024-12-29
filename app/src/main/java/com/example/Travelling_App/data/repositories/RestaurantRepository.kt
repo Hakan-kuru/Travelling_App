@@ -41,5 +41,5 @@ class RestaurantRepository(private val restaurantDao: RestaurantDao) {
 }
 
 // Dönüşüm fonksiyonları
-fun RestaurantEntity.toDomainModel() = Restaurant( restaurantId, destinarionId, restaurantName, description, cuisineType, rating, priceRange, number)
-fun Restaurant.toEntity() = RestaurantEntity( restaurantId, destinarionId, restaurantName, description, cuisineType, rating, priceRange, number)
+fun RestaurantEntity.toDomainModel() = Restaurant( restaurantId, destinarionId, restaurantName, description, cuisineType, rating, priceRange, number, image)
+fun Restaurant.toEntity() = RestaurantEntity( restaurantId, destinarionId, restaurantName, description, cuisineType, rating, priceRange, number, image)

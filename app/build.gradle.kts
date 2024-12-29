@@ -47,6 +47,13 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+    sourceSets {
+        getByName("main") {
+            assets {
+                srcDirs("src\\main\\assets", "src\\main\\assets")
+            }
+        }
+    }
 }
 
 dependencies {
@@ -87,14 +94,14 @@ dependencies {
 
 
     val compose_version = "1.7.6"
-    implementation("androidx.compose.ui:ui:$compose_version")
-    implementation("androidx.compose.material:material:1.7.6")
-    implementation("androidx.compose.ui:ui-tooling-preview:$compose_version")
-    implementation("androidx.navigation:navigation-compose:2.7.0")
+    implementation(libs.ui)
+    implementation(libs.androidx.material)
+    implementation(libs.ui.tooling.preview)
+    implementation(libs.androidx.navigation.compose)
 
-    implementation("om.google.dagger:hilt-android:2.47")
+//    implementation("om.google.dagger:hilt-android:2.49")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("com.google.dagger:hilt-android-gradle-plugin:2.47")
+    implementation("com.google.dagger:hilt-android-gradle-plugin:2.49")
     //fot Testing
 
     //ui
