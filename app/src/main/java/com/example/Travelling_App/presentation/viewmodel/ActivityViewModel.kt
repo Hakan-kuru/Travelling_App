@@ -3,8 +3,13 @@ package com.example.Travelling_App.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.Travelling_App.domain.models.Activity
 import com.example.Travelling_App.domain.usecase.ActivityUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class ActivityViewModel(private val activityUsecase: ActivityUsecase) : ViewModel(){
+@HiltViewModel
+class ActivityViewModel @Inject constructor(
+    private val activityUsecase: ActivityUsecase
+) : ViewModel(){
     suspend fun getAllActivities(): List<Activity> {
         return activityUsecase.getAllActivities()
     }

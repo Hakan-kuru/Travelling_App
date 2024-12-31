@@ -4,9 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.Travelling_App.domain.models.Weather
 import com.example.Travelling_App.domain.usecase.GetWeatherUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class WeatherViewModel(private val getWeatherUsecase: GetWeatherUsecase) : ViewModel(){
+@HiltViewModel
+class WeatherViewModel @Inject constructor(private val getWeatherUsecase: GetWeatherUsecase) : ViewModel(){
 
     fun deleteWeatherById(weatherId: Int, onComplete: () -> Unit) {
         viewModelScope.launch {

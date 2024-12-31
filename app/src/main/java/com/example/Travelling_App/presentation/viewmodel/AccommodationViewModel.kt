@@ -4,9 +4,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.Travelling_App.domain.models.Accommodation
 import com.example.Travelling_App.domain.usecase.AccommodationUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class AccommodationViewModel(private val accommodationUsecase: AccommodationUsecase) : ViewModel() {
+@HiltViewModel
+class AccommodationViewModel @Inject constructor(
+    private val accommodationUsecase: AccommodationUsecase
+) : ViewModel() {
 
     fun getAllAccommandation(onResult: (List<Accommodation>) -> Unit) {
         viewModelScope.launch {

@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.Travelling_App.domain.models.Reminder
 import com.example.Travelling_App.domain.usecase.reminderUsecase.*
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ReminderViewModel(
+@HiltViewModel
+class ReminderViewModel @Inject constructor(
     private val getPlannedRemindersUsecase: GetPlannedRemindersUsecase,
     private val getWishListRemindersUsecase: GetWishListRemindersUsecase,
     private val getAllRemindersUsecase: GetAllRemindersUsecase,

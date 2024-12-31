@@ -3,8 +3,13 @@ package com.example.Travelling_App.presentation.viewmodel
 import androidx.lifecycle.ViewModel
 import com.example.Travelling_App.domain.models.Destination
 import com.example.Travelling_App.domain.usecase.GetDestinationUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class DestinationViewModel(private val getDestinationUsecase: GetDestinationUsecase) : ViewModel() {
+@HiltViewModel
+class DestinationViewModel @Inject constructor(
+    private val getDestinationUsecase: GetDestinationUsecase
+) : ViewModel() {
 
     suspend fun getDestinationById(destinationId: Int): Destination? {
         return getDestinationUsecase.getDestinationById(destinationId)

@@ -1,8 +1,7 @@
 package com.example.app.signup
 
-import android.content.Context
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,7 +15,7 @@ import com.example.Travelling_App.presentation.viewmodel.UserViewModel
 fun SignUp(
     onSignUpSuccess: (String) -> Unit,
     onSignUpError: (String) -> Unit,
-    viewModel: UserViewModel = hiltViewModel()
+    viewModel: UserViewModel
 ) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -33,7 +32,7 @@ fun SignUp(
             .padding(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text("Kayıt Ol", style = MaterialTheme.typography.h4)
+        Text("Kayıt Ol", style = MaterialTheme.typography.headlineLarge)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -135,11 +134,13 @@ fun SignUp(
 }
 @Preview(showBackground = true)
 @Composable
-fun SignUpPreview() { // Eğer bir mock veya sahte viewModel gerekirse
+fun SignUpPreview(
+    viewModel: UserViewModel = hiltViewModel()
+) { // Eğer bir mock veya sahte viewModel gerekirse
     SignUp(
         onSignUpSuccess = { message -> println("Success: $message") },
         onSignUpError = { error -> println("Error: $error") },
-        viewModel = hiltViewModel()
+        viewModel = viewModel
     )
 }
 

@@ -6,8 +6,13 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import com.example.Travelling_App.domain.models.Restaurant
 import com.example.Travelling_App.domain.usecase.GetRestaurantUsecase
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class RestaurantViewModel(private val getRestaurantUsecase: GetRestaurantUsecase) : ViewModel() {
+@HiltViewModel
+class RestaurantViewModel @Inject constructor(
+    private val getRestaurantUsecase: GetRestaurantUsecase
+) : ViewModel() {
     fun deleteRestaurantById(restaurantId: Int, onComplete: () -> Unit) {
         viewModelScope.launch {
             getRestaurantUsecase.deleteRestaurantById(restaurantId)
